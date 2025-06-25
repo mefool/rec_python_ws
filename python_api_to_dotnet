@@ -1,0 +1,20 @@
+  c:/python_api_to_dotnet:
+  drwxrwxrwx  1 TrustedInstaller TrustedInstaller   8192 05-15 09:20 ..
+  dr-xr-xr-x  1 vgarfern         vgarfern          20480 05-15 10:50 .
+  drwxrwxrwx  1 SYSTEM           SYSTEM                0 05-14 15:28 aspnet_client
+  -rw-rw-rw-  1 vgarfern         vgarfern         371571 04-11 11:38 EECS-GO-Standard-contract_V2.2.pdf
+  -rw-rw-rw-  1 vgarfern         vgarfern          11155 05-15 09:44 guide.md
+  -rw-rw-rw-  1 vgarfern         vgarfern          11154 05-14 15:34 guide.txt
+  drwxrwxrwx  1 vgarfern         vgarfern           4096 05-15 09:50 hidden_configs
+  -rw-rw-rw-  1 vgarfern         vgarfern          14056 05-14 12:21 main.py
+  -rw-rw-rw-  1 vgarfern         vgarfern            655 05-08 17:33 main.py.bak
+  -rw-rw-rw-  1 vgarfern         vgarfern           8753 05-08 18:17 models.py
+  -rw-rw-rw-  1 vgarfern         vgarfern         422703 05-14 13:27 output.pdf
+  drwxrwxrwx  1 vgarfern         vgarfern           4096 05-14 12:21 __pycache__
+  -rw-rw-rw-  1 NETWORK SERVICE  NETWORK SERVICE     164 05-14 17:53 python.log_2192_2025514165253.log
+  -rw-rw-rw-  1 NETWORK SERVICE  NETWORK SERVICE     164 05-14 17:34 python.log_32612_202551416342.log
+  -rw-rw-rw-  1 NETWORK SERVICE  NETWORK SERVICE       0 05-15 10:40 python.log_3340_202551594024.log
+  -rw-rw-rw-  1 NETWORK SERVICE  NETWORK SERVICE     152 05-15 10:42 python.log_3340_202551594235.log
+  -rw-rw-rw-  1 NETWORK SERVICE  NETWORK SERVICE     164 05-15 10:46 python.log_3340_202551594555.log
+  drwxrwxrwx  1 vgarfern         vgarfern           4096 05-14 17:22 venv
+  -rw-rw-rw-  1 vgarfern         vgarfern            786 05-15 10:42 web.config
