@@ -1,16 +1,15 @@
-import os
-import sys
-from PyPDFForm import FormWrapper # pip install PyPDFForm
+from io import BytesIO
+from PyPDFForm import PdfWrapper # pip install PyPDFForm
 from models import RecComplete # ./models.py
 from flask import Flask, Response, send_file, send_from_directory, request
 
 app = Flask(__name__)
 port = os.getenv("ASPNETCORE_PORT", "5000")
-directory = "c:/Users/vgarfern/OneDrive - NTT DATA EMEAL/Escritorio/Utilities/work/year2025/07Jul/httpplatform_python_rec/"
+directory = "c:/httpplatform_python_rec"
 
 @app.route('/')
 def hello():
-    return f'Hello World'
+    return f'Hello World.\nEECS GO Standard Contract V2.2 Form Fill WS'
 
 @app.route("/rec_template")
 def write_recfile_template():
@@ -26,7 +25,7 @@ def write_recfile_template():
 def write_recfile_example():
     filename = "EECS-GO-Standard-contract_V2.2.pdf"
 
-    filled = FormWrapper(filename).fill(
+    filled = PdfWrapper(filename).fill(
     {
         "Group1": 0, #"Group1_type_integer_maximum_1",
         "Group2": 1, #"Group2_type_integer_maximum_1",
@@ -188,15 +187,13 @@ def write_recfile_example():
     },
     adobe_mode=True,
     )
-    with open("output.pdf", "wb+") as output:
-        output.write(filled.read())
-    output_filename = "output.pdf"
-    #
-    return send_from_directory(
-        directory,
-        output_filename,
-        mimetype='application/pdf'
-    )
+    #with open("output.pdf", "wb+") as output:
+    #    output.write(filled.read())
+    #output_filename = "output.pdf"
+    outfile = BytesIO(filled.read())
+    outfile.seek(0)
+    with BytesIO() as output:
+        return send_file(outfile,mimetype='application/pdf')
 
 # This decorator takes the class/namedtuple to convert any JSON
 # data in incoming request to. 
@@ -212,8 +209,8 @@ def convert_input_to(class_):
 @convert_input_to(RecComplete)
 def write_recfile_complete(request): #request: RecComplete
     filename = "EECS-GO-Standard-contract_V2.2.pdf"
-
-    filled = FormWrapper(filename).fill(
+    path = directory + "/" + filename
+    filled = PdfWrapper(path).fill(
     {
         "currency": request.currency,
         "Group1": 1 if request.group1_int == "1" else 0,
@@ -375,15 +372,10 @@ def write_recfile_complete(request): #request: RecComplete
     },
     adobe_mode=True,
     )
-    with open("output.pdf", "wb+") as output:
-        output.write(filled.read())
-    output_filename = "./output.pdf"
-    
-    return send_from_directory(
-        directory,
-        output_filename,
-        mimetype='application/pdf'
-    )
+    outfile = BytesIO(filled.read())
+    outfile.seek(0)
+    with BytesIO() as output:
+        return send_file(outfile,mimetype='application/pdf')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=port)
