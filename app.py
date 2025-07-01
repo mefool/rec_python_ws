@@ -1,3 +1,4 @@
+import os
 from io import BytesIO
 from PyPDFForm import PdfWrapper # pip install PyPDFForm
 from models import RecComplete # ./models.py
@@ -209,7 +210,7 @@ def convert_input_to(class_):
 @convert_input_to(RecComplete)
 def write_recfile_complete(request): #request: RecComplete
     filename = "EECS-GO-Standard-contract_V2.2.pdf"
-    path = directory + "/" + filename
+    
     filled = PdfWrapper(path).fill(
     {
         "currency": request.currency,
